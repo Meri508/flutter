@@ -1,0 +1,40 @@
+void main() {
+  // Invited students
+  Set<String> invited = {
+    'Amanuel',
+    'Sara',
+    'Lily',
+    'John',
+    'Daniel'
+  };
+
+  // Confirmed students (some may be null)
+  Set<String?> confirmed = {
+    'Sara',
+    'John',
+    null,
+    'Lily'
+  };
+
+  // Remove null entries safely
+  Set<String> confirmedSafe = confirmed.whereType<String>().toSet();
+
+  // Students who did not confirm
+  Set<String> notConfirmed = Set.from(invited)..removeAll(confirmedSafe);
+
+  // Students who confirmed but were not invited
+  Set<String> crashedParty = Set.from(confirmedSafe)..removeAll(invited);
+
+  // Output
+  print('Total invited: ${invited.length}');
+  print('Total confirmed: ${confirmedSafe.length}');
+  print('Students who did not confirm: $notConfirmed');
+  print('Students who crashed the party: $crashedParty');
+
+  // Extra challenge – user input
+  if (notConfirmed.isEmpty) {
+    print('\nAll invited guests confirmed!');
+  } else {
+    print('\nMissing confirmations from: $notConfirmed');
+  }
+}
