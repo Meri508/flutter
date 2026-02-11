@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const HelloFlutterApp());
+}
+
+class HelloFlutterApp extends StatelessWidget {
+  const HelloFlutterApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Welcome to Flutter"),
+          backgroundColor: Colors.blue,
+        ),
+        body: const Center(
+          child: Text(
+            "This is my first Flutter app",
+            style: TextStyle(
+              fontSize: 24,           // Changed text size
+              color: Colors.deepPurple, // Changed text color
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    );
+  }
+}
